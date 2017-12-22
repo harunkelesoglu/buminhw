@@ -8,7 +8,10 @@ router.get('/',function(req,res){
 });
 
 router.get('/login',function(req,res){
-	res.render('login')
+	if(req.session.token)
+		res.redirect('/')
+	else
+		res.render('login')
 });
 
 router.post('/login',function(req,res){
