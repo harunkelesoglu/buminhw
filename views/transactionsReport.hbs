@@ -1,0 +1,47 @@
+{{#section 'head'}}
+    
+	<script type="text/javascript" src="/js/plugins/ui/moment/moment.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/daterangepicker.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/anytime.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/picker.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/picker.date.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/picker.time.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/legacy.js"></script>
+	<script type="text/javascript" src="/js/pages/picker_date.js"></script>
+{{/section}}
+
+
+<div class="panel panel-flat border-left-grey border-right-grey">
+    <div class="panel-body">
+        <div class="content-group">
+            <form action="/transactions/report" method="post">
+                    <div class="col-md-4">
+                        <input type="text" name="date" class="form-control daterange-basic">
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="number" name="merchant" placeholder="merchant">
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="number" name="acquirer" placeholder="acquirer">
+                    </div>    
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success pull-right"> Query </button>
+                    </div> 
+             </form>    
+        </div>
+    </div>
+
+</div>
+
+<div class="panel panel-flat border-left-grey border-right-grey">
+    <div class="panel-body">
+        <div class="content-group">
+			<p><span class="text-semibold">JSON</span> result</p>
+				<div id="json_editor">
+                {{json data}}
+                </div>
+		</div>
+    </div>
+</div>
+
+{{> notify}}

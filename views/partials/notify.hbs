@@ -1,0 +1,33 @@
+
+{{#section 'jquery'}}
+<script>
+    if('{{success_msg}}'){
+
+     $.jGrowl('{{success_msg}}', {
+            header: 'Success!',
+            theme: 'bg-success'
+        });
+
+    }else if('{{error_msg}}'){
+
+        $.jGrowl('{{error_msg}}', {
+             header: 'Error!',
+             theme: 'bg-danger'
+         });
+    }
+    else if('{{error}}'){
+        $.jGrowl('{{error}}', {
+            header: 'Error!',
+            theme: 'bg-danger'
+        });
+    }else if('{{errors}}'){
+        
+        "{{#each errors}}"
+                $.jGrowl('{{msg}}', {
+                header: 'Error!',
+                theme: 'bg-danger'
+            });
+          "{{/each}}"
+    }
+</script>
+{{/section}}

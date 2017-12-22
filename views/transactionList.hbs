@@ -1,0 +1,206 @@
+
+{{#section 'head'}}
+    <script type="text/javascript" src="/js/plugins/notifications/jgrowl.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/ui/moment/moment.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/daterangepicker.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/anytime.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/picker.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/picker.date.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/picker.time.js"></script>
+	<script type="text/javascript" src="/js/plugins/pickers/pickadate/legacy.js"></script>
+
+	<script type="text/javascript" src="/js/core/app.js"></script>
+	<script type="text/javascript" src="/js/pages/picker_date.js"></script>
+{{/section}}
+
+
+<div class="panel panel-flat border-left-grey border-right-grey">
+    <div class="panel-body">
+        <form>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="text" id="fromDate" class="form-control daterange-single">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="text" id="toDate" class="form-control daterange-single">
+                </div>
+            </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label >Merchant Id</label>
+                        <input class="form-control" id="merchantID" type="number" name="merchantID" placeholder="merchant ID">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">Acquirer Id</label>
+                        <input class="form-control" id="acquirerID" type="number" name="acquirerID" placeholder="acquirer ID">
+                    </div>
+                </div> 
+           </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="status" name="status" class="form-control">
+                            <option disabled selected value> -- select -- </option>
+                            <option value="APPROVED">APPROVED</option>
+                            <option value="WAITING">WAITING</option>
+                            <option value="DECLINED">DECLINED</option>
+                            <option value="ERROR">ERROR</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label >Operation </label>
+                        <select id="operation" name="operation" class="form-control">
+                            <option disabled selected value> -- select -- </option>
+                            <option value="DIRECT">DIRECT</option>
+                            <option value="REFUND">REFUND</option>
+                            <option value="3D">3D</option>
+                            <option value="3DAUTH">3DAUTH</option>
+                            <option value="STORED">STORED</option>
+                        </select>
+                    </div>
+                </div>
+             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label >Payment Method</label>
+                        <select id="paymentMethod" name="paymentMethod" class="form-control">
+                            <option disabled selected value> -- select -- </option>
+                            <option value="CREDITCARD">CREDITCARD</option>
+                            <option value="CUP">CUP</option>
+                            <option value="IDEAL">IDEAL</option>
+                            <option value="GIROPAY">GIROPAY</option>
+                            <option value="MISTERCASH">MISTERCASH</option>
+                            <option value="STORED">STORED</option>
+                            <option value="PAYTOCARD">PAYTOCARD</option>
+                            <option value="CEPBANK">CEPBANK</option>
+                            <option value="CITADEL">CITADEL</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label >Error Code</label>
+                    <select id="errorCode" name="errorCode" class="form-control">
+                            <option disabled selected value> -- select -- </option>
+                            <option value="Do not honor">Do not honor</option>
+                            <option value="Invalid Transaction">Invalid Transaction</option>
+                            <option value="Invalid Card">Invalid Card</option>
+                            <option value="Not sufficient funds">Not sufficient funds</option>
+                            <option value="Incorrect PIN">Incorrect PIN</option>
+                            <option value="Invalid country association">Invalid country association</option>
+                            <option value="Currency not allowed">Currency not allowed</option>
+                            <option value="3-D Secure Transport Error">3-D Secure Transport Error</option>
+                            <option value="Transaction not permitted to cardholder">Transaction not permitted to cardholder</option>
+                        </select>
+                    </div>
+                </div> 
+            </div> 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Filter Field</label>
+                     <select id="filterField" name="filterField" class="form-control">
+                        <option disabled selected value> -- select -- </option>
+				        <option value="Transaction UUID">Transaction UUID</option>
+				        <option value="Customer Email">Customer Email</option>
+				        <option value="Reference No">Reference No</option>
+				        <option value="Custom Data">Custom Data</option>
+                        <option value="Card PAN">Card PAN</option>
+				    </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label is-visible">Filter Value </label>
+                        <input class="form-control" id="filterValue" type="text" name="filterValue" placeholder="filter value">
+                     </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">Page</label>
+                        <input class="form-control" id="page" type="number" name="page" placeholder="page">
+                    </div>
+                </div> 
+            </div> 
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                    <button type="button" id="query" class="btn btn-success pull-right" > Query </button>
+                    </div>
+                </div>
+                </div> 
+             </form>
+        </div>
+    </div>
+
+<div class="panel panel-flat border-left-grey border-right-grey" >
+    <div class="panel-body">
+        <div class="content-group">
+			<p><span class="text-semibold">JSON</span> result</p>
+				<div id="json_editor">
+                {{json transactionList}}
+                </div>
+		</div>
+    </div>
+</div>
+
+{{> notify}}
+
+{{#section 'jquery'}}
+    <script>
+       
+         $('#query').click(function(){
+             var query='';
+             var fromDate = $("#fromDate").val(),
+                 toDate = $("#toDate").val();
+
+             if(fromDate)
+                query+="fromDate="+fromDate+"&";
+             if(toDate)
+                query+="toDate="+toDate+"&";
+
+        // we get all values in form except dates
+             $.each($("form").serializeArray(),function(i,field){ 
+                    if(field.value){
+                         query+=field.name+"="+encodeURIComponent(field.value)+"&";
+                    }
+             });
+            
+             $.ajax({
+                url: '/transaction/list',
+                method: 'POST',
+                data: {query:query},
+                dataType: 'json',
+                success: function (response) {
+                 
+                    if(response){
+                        window.location.reload();
+                        }
+                    
+                    
+                        
+                },
+                error: function (err) {
+                    console.log(err);
+                    
+                }
+            });
+         });
+     
+    
+    </script>
+   
+{{/section}}
