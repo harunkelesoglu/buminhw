@@ -48,7 +48,6 @@ router.post('/login',function(req,res){
 					req.session.token = result.token;
 					req.session.email = email; 
 					req.session.password = pass;
-					req.session.cookie.maxAge+=600000   //session is extend 10 minute
 					req.flash('success_msg',"Authentication is success");
 					res.status(200).redirect('/');
 				}
