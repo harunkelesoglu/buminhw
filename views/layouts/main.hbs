@@ -99,17 +99,20 @@
 				ignoreUserActivity: true,
 				warnAfter: 540000,   		//timer for session alert
 				redirAfter: 600000, 		// session is closed time
-				keepAliveUrl: '/',
+				keepAliveUrl: '/login',
 				ajaxData: {'email':"{{email}}",'password':"{{password}}"},
 				redirUrl: '/logout',
 				logoutUrl: '/logout',
-				keepBtnText: 'New Token'
+				keepBtnText: 'New Token',
+				onRedir: function(){
+					$.post('/logout',function(){ window.location.replace('/login');});
+				}
 			});
 	
 	}
-function setActive(){
-	console.log(this);
-}
+ $("#sessionTimeout-dialog-logout").click(function(){
+	 $.post('/logout',function(){ window.location.replace('/login');});
+ })
  
 	
 	</script>
